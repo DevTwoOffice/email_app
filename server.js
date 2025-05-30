@@ -15,14 +15,15 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/send-email', async (req, res) => {
-  const { email } = req.body;
+  const { email,subject, message, html  } = req.body;
 
   try {
     await transporter.sendMail({
       from: '"No Reply" <noreply@example.com>',
       to: email,
-      subject: 'Email Received Successfully',
-      text: 'Thank you! Your email has been received.',
+      subject: subject || 'Default Subject',
+      text: message || 'Default plain text message',
+      html: html || undefined, // HTML body (optional)
     });
 
     res.json({ success: true });
