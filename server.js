@@ -9,11 +9,11 @@ app.use(cors());
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
-    user: process.env.EMAIL_USER, // your gmail
-    pass: process.env.EMAIL_PASS, // app password
+    user: 'bnmmessaging@gmail.com', // your gmail
+    pass: 'nlsfuifrnljvwmho', // app password
   },
 });
-
+console.log(process.env.EMAIL_USER,process.env.EMAIL_PASS,"hardcoded value are bnmmessaging@gmail.com and nlsfuifrnljvwmho")
 app.post('/send-email', async (req, res) => {
   const { email,subject, message, html  } = req.body;
 
